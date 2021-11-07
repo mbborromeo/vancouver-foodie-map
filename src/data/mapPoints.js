@@ -21,11 +21,6 @@ export default {
       lng: -123.11971221608198,
     },
     {
-      label: 'Blenz Coffee',
-      lat: 49.26349295339335, 
-      lng: -123.11971221608198,
-    },
-    {
       label: 'Dalina',
       lat: 49.263303806008096, 
       lng: -123.12641664794796,
@@ -39,7 +34,72 @@ export default {
       label: 'Beaucoup Bakery',
       lat: 49.266577777753184, 
       lng: -123.14072383936174,
-    }
+    },
+    {
+      label: 'Pallet Coffee Roasters',
+      lat: 49.26359654012127, 
+      lng: -123.15079629443129,
+    },
+    {
+      label: 'Platform 7 Coffee',
+      lat: 49.263775532222375, 
+      lng: -123.15784109770138,
+    },
+    {
+      label: 'Thomas Haas Chocolatier',
+      lat: 49.26423878286061, 
+      lng: -123.16335139396156,
+    },
+    {
+      label: "Juliet's Cafe",
+      lat: 49.272637404600964, 
+      lng: -123.14803722438617,
+    },
+    {
+      label: 'Cafe Zen',
+      lat: 49.27117000256656, 
+      lng: -123.1552107186119,
+    },
+    {
+      label: 'Viva Fine Foods & Bakery',
+      lat: 49.27209581182346, 
+      lng: -123.15513496061445,
+    },
+    {
+      label: 'Blue Parrot',
+      lat: 49.27267772878422, 
+      lng: -123.13540418428299,
+    },
+    {
+      label: 'Our Town Cafe',
+      lat: 49.26301729616128, 
+      lng: -123.09992144343515,
+    },
+    {
+      label: 'Thierry Chocolatier Mt Pleasant',
+      lat: 49.26211593765953, 
+      lng: -123.0998495944646,
+    },
+    {
+      label: 'Milano Coffee Roasters',
+      lat: 49.263843350098405, 
+      lng: -123.10870006392572,
+    },
+    {
+      label: 'Terra Breads',
+      lat: 49.27147526097092, 
+      lng: -123.10681443907596,
+    },
+    {
+      label: 'Caffe Artigiano',
+      lat: 49.274798669343184, 
+      lng: -123.12241934125637,
+    },
+    {
+      label: 'Coo Coo Coffee',
+      lat: 49.27581978214419, 
+      lng: -123.12371161444106,
+    },
   ],
 
   JuiceBars: [

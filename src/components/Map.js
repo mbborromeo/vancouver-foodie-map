@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import './map.css';
 import LocationPin from './LocationPin';
 import NearbyAttractions from './elements/NearbyAttractions';
+import Point from './elements/Point';
 import mapPoints from '../data/mapPoints';
 
 const myAPIKey = "AIzaSyCmgI79g2spF5dHDqd4_xJMAC_vOehnzWo";
@@ -51,6 +52,21 @@ const Map = ({ location, zoomLevel }) => {
             lng={ location.lng }
             text={ location.address }
           />
+
+          {
+            mapPoints[activeCategory] && mapPoints[activeCategory].length > 0 &&
+            mapPoints[activeCategory].map( (point, index) => (
+              <Point
+                point={point}
+                lat={point.lat}
+                lng={point.lng}
+                key={index}
+                index={index}
+                // handleClick={handlePointSelect}
+                // isActive={activePoint === point}                
+              />
+            ))
+          }
         </GoogleMapReact>
       </div>
     </div>
