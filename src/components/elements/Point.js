@@ -1,23 +1,33 @@
 
+import styled from 'styled-components';
+
 const Point = (props) => {
-  const { lat, lng, index } = props; /* , point, isActive, handleClick, */
+  const { lat, lng, index, isActive, point, handleClick } = props;
   const { label } = props.point;
 
   return (
     <div
       lat={lat}
       lng={lng}
-      // isActive={isActive}
-      // onClick={() => handleClick(point)}
+      isActive={isActive}
+      onClick={() => handleClick(point)}
       index={index}
     >
-      <div>
+      <Label isActive={isActive}>
         <p className="body3 bold">{label}</p>
-      </div>
+      </Label>
       
-      <h6>{index + 1}</h6>
+      <Index isActive={isActive}>{index + 1}</Index>
     </div>
   );
 };
 
 export default Point;
+
+const Label = styled.div`
+  opacity: ${ (props) => (props.isActive ? 1 : 0) };
+`;
+
+const Index = styled.h6`
+  color: ${ (props) => (props.isActive ? 'blue' : 'grey') };
+`;
