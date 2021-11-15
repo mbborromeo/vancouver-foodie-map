@@ -6,7 +6,7 @@ const Point = (props) => {
   const { label } = props.point;
 
   return (
-    <div
+    <Root
       lat={lat}
       lng={lng}
       isActive={isActive}
@@ -18,16 +18,59 @@ const Point = (props) => {
       </Label>
       
       <Index isActive={isActive}>{index + 1}</Index>
-    </div>
+    </Root>
   );
 };
 
 export default Point;
 
+
+/* points of interest on map */
+const Root = styled.div`
+  border-radius: 50%; /* circle shape */
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  height: 20px;
+  width: 20px;
+  position: relative;
+  z-index: ${(props) => (props.isActive ? 100 : 3)};
+  background-color: ${(props) => (props.isActive ? 'brown' : 'rosybrown')};
+`;
+
 const Label = styled.div`
   opacity: ${ (props) => (props.isActive ? 1 : 0) };
+  pointer-events: none;
+  height: fit-content;
+  width: fit-content;
+  padding: 0px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  background-color: brown;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translate(-50%, -100%);
+  transition: opacity 0.3s ease;
+  min-width: 126px;
+  z-index: 3;
+
+  /* triangle down arrow */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid brown;
+  }
 `;
 
 const Index = styled.h6`
-  color: ${ (props) => (props.isActive ? 'blue' : 'grey') };
+  color: ${ (props) => props.isActive ? 'white' : 'black' };
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
 `;

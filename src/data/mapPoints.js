@@ -100,6 +100,16 @@ export default {
       lat: 49.27581978214419, 
       lng: -123.12371161444106,
     },
+    {
+      label: 'Koko Monk Hot Chocolate Lounge',
+      lat: 49.264368103138786, 
+      lng: -123.17001615971574,
+    },
+    {
+      label: 'JJ Bean Coffee Roasters',
+      lat: 49.258401940945866, 
+      lng: -123.1009314442571,
+    },
   ],
 
   JuiceBars: [

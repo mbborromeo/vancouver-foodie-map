@@ -1,17 +1,18 @@
+import styled from 'styled-components';
 
 const NearbyAttractions = (props) => {
   const {
     activeCategory,
-    // activePoint,
+    activePoint,
     // handleMenu,
     // menuOpen,
-    handleCategorySelection,
-    // handlePointSelect,
+    // handleCategorySelection,
+    handlePointSelect,
     mapPoints,
   } = props;
 
   return (
-    <div>
+    <Root>
       { Object.keys( mapPoints ).map( (category, index) => (
             <h6 key={ index }>
               { category }
@@ -23,14 +24,31 @@ const NearbyAttractions = (props) => {
       <ol>
         { mapPoints[ activeCategory ] && mapPoints[ activeCategory ].length > 0 &&
           mapPoints[ activeCategory ].map( (location, index) => (
-            <li key={ index }>
+            <ListItem 
+              onClick={() => handlePointSelect(location)}
+              key={index}
+              isActive={activePoint === location}
+            >
               { location.label }
-            </li>
+            </ListItem>
           ))
         }
       </ol>
-    </div>
+    </Root>
   );
 };
 
 export default NearbyAttractions;
+
+const Root = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: auto;
+  border: 1px solid green;
+`;
+
+const ListItem = styled.li`
+  font-weight: ${ (props) => (props.isActive ? 'bold' : 'normal') };
+`;

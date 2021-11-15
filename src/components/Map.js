@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
-import './map.css';
-import LocationPin from './LocationPin';
-import NearbyAttractions from './elements/NearbyAttractions';
+import styled from 'styled-components';
+import LocationPin from './elements/LocationPin';
+import NearbyAttractions from './sections/NearbyAttractions';
 import Point from './elements/Point';
 import mapPoints from '../data/mapPoints';
 
@@ -54,9 +54,10 @@ const Map = ({center, zoom}) => {
 
   const handlePointSelect = (point) => {
     setActivePoint(point);
-    console.log('handlePointSelect maps', maps)
 
     let bounds = new maps.LatLngBounds();
+    console.log('handlePointSelect bounds', bounds)
+
     mapPoints[activeCategory].forEach((place) => {
       bounds.extend(new maps.LatLng(place.lat, place.lng));
     });
@@ -77,12 +78,12 @@ const Map = ({center, zoom}) => {
   };
 
   // Return map bounds based on list of places
-  const getMapBounds = (map, maps, places) => {
-    console.log('getMapBounds maps', maps)
+  const getMapBounds = (map, maps, places) => {    
     setMap(map);
     setMaps(maps);
 
     const bounds = new maps.LatLngBounds();
+    console.log('getMapBounds bounds', bounds)
 
     places.forEach((place) => {
       bounds.extend(new maps.LatLng(place.lat, place.lng));
@@ -103,10 +104,11 @@ const Map = ({center, zoom}) => {
   };
 
   // Fit map to its bounds after the api is loaded
-  const apiIsLoaded = (map, maps, places) => { // , places
-    console.log('apiIsLoaded maps', maps)
+  const apiIsLoaded = (map, maps, places) => {
     // Get bounds by our places
-    const bounds = getMapBounds(map, maps, places); // ,  mapPoints[activeCategory]
+    const bounds = getMapBounds(map, maps, places);
+    console.log('apiIsLoaded bounds', bounds)
+
     // Fit map to bounds
     map.fitBounds(bounds);
     // Bind the resize listener
@@ -121,20 +123,18 @@ const Map = ({center, zoom}) => {
   }, []);
 
   return (
-    <div className="map">
-      <h2 className="map-h2">Foodie Tour: South Granville &amp; surrounds</h2>
+    <Container>
+      <NearbyAttractions
+        activeCategory={activeCategory}
+        activePoint={activePoint}
+        // menuOpen={menuOpen}
+        // handleCategorySelection={handleCategorySelection}
+        // handleMenu={setMenuOpen}
+        mapPoints={mapPoints}
+        handlePointSelect={handlePointSelect}
+      />
 
-      <div className="google-map">
-        {/* <NearbyAttractions
-          activeCategory={activeCategory}
-          activePoint={activePoint}
-          // menuOpen={menuOpen}
-          // handleCategorySelection={handleCategorySelection}
-          // handleMenu={setMenuOpen}
-          mapPoints={mapPoints}
-          // handlePointSelect={handlePointSelect}
-        /> */}
-
+      <MapWrapper>
         <GoogleMapReact
           bootstrapURLKeys={ { key: myAPIKey } }
           defaultCenter={{ lat: mapCenter.lat, lng: mapCenter.lng }}
@@ -171,9 +171,27 @@ const Map = ({center, zoom}) => {
             ))
           }
         </GoogleMapReact>
-      </div>
-    </div>
+      </MapWrapper>
+    </Container>
   );
 }
 
 export default Map;
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh; /* 680px */
+  border: 1px solid orange;
+  position: relative;
+  // overflow: hidden;
+  padding: unset;
+`;
+
+const MapWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100vh;
+  border: 1px solid blue;
+`;

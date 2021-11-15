@@ -11,6 +11,8 @@ function App() {
 
   return (
     <div style={{ height: '100vh', width: '100%' }}>
+      <h2 className="map-h2">Foodie Tour: South Granville &amp; surrounds</h2>
+
       <Map 
         center={{ lat: location.lat, lng: location.lng }}
         zoom={ zoomLevel }        
