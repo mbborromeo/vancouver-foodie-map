@@ -11,6 +11,7 @@ const myAPIKey = "AIzaSyCmgI79g2spF5dHDqd4_xJMAC_vOehnzWo";
 
 const Map = ({center, zoom}) => {
   const [activeCategory, setActiveCategory] = useState('CafesAndBakeries');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activePoint, setActivePoint] = useState(null);
   const [maps, setMaps] = useState(null);
   const [map, setMap] = useState(null);
@@ -35,22 +36,23 @@ const Map = ({center, zoom}) => {
     });
   };
 
-  /*
   const handleCategorySelection = (category) => {
-    setActiveCategory(category);
-    // setMapCenter({ lat: 47.7210293, lng: -122.2045769 });
-    // setActivePoint(null);
-    // setMenuOpen(false);
+    setActiveCategory( category );
+    setMapCenter({ 
+      lat: 49.26667042947885, 
+      lng: -123.13828862493452,
+    });
+    setActivePoint(null);
+    setMenuOpen(false);
 
-    // const bounds = new maps.LatLngBounds();
-    // mapPoints[category].forEach((place) => {
-    //   bounds.extend(new maps.LatLng(place.lat, place.lng));
-    // });
+    const bounds = new maps.LatLngBounds();
+    mapPoints[ category ].forEach( (place) => {
+      bounds.extend( new maps.LatLng(place.lat, place.lng) );
+    });
 
-    // bounds.extend(new maps.LatLng(47.7210293, -122.2045769));
-    // map.fitBounds(bounds);
+    bounds.extend( new maps.LatLng( 49.26667042947885, -123.13828862493452) );
+    map.fitBounds( bounds );
   };
-  */
 
   const handlePointSelect = (point) => {
     setActivePoint(point);
@@ -127,9 +129,9 @@ const Map = ({center, zoom}) => {
       <NearbyAttractions
         activeCategory={activeCategory}
         activePoint={activePoint}
-        // menuOpen={menuOpen}
-        // handleCategorySelection={handleCategorySelection}
-        // handleMenu={setMenuOpen}
+        menuOpen={menuOpen}
+        handleMenu={setMenuOpen}
+        handleCategorySelection={handleCategorySelection}
         mapPoints={mapPoints}
         handlePointSelect={handlePointSelect}
       />
