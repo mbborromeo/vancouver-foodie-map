@@ -31,19 +31,21 @@ const NearbyAttractions = (props) => {
         )}
       </DropdownContainer>
 
-      <ol>
-        { mapPoints[ activeCategory ] && mapPoints[ activeCategory ].length > 0 &&
-          mapPoints[ activeCategory ].map( (location, index) => (
-            <ListItem 
-              onClick={() => handlePointSelect(location)}
-              key={index}
-              isActive={activePoint === location}
-            >
-              { location.label }
-            </ListItem>
-          ))
-        }
-      </ol>
+      <AttractionsList>
+        <ol>
+          { mapPoints[ activeCategory ] && mapPoints[ activeCategory ].length > 0 &&
+            mapPoints[ activeCategory ].map( (location, index) => (
+              <ListItem 
+                onClick={() => handlePointSelect(location)}
+                key={index}
+                isActive={activePoint === location}
+              >
+                { location.label }
+              </ListItem>
+            ))
+          }
+        </ol>
+      </AttractionsList>
     </Root>
   );
 };
@@ -56,11 +58,76 @@ const Root = styled.div`
   left: 0;
   width: 20%;
   height: auto;
-  border: 1px solid green;
+  background-color: sandybrown;
+`;
+
+const AttractionsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  background-color: white;
+  max-height: 515px;
+
+  ol {
+    margin: 0;
+    padding: 0 10px 0 0;
+    overflow-y: auto;
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: 0.5;
+
+    li {
+      cursor: pointer;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 4px;
+      background-color: white;
+      border-radius: 0;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: white;
+      height: 467px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: blue;
+      height: 300px;
+      width: 4px;
+      border-radius: 0;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: yellow;
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: rgba(0, 0, 0, 0);
+    }
+  }
+
+  p {
+    padding-left: 16px;
+    line-height: 2.24;
+  }
 `;
 
 const ListItem = styled.li`
+  /* box-sizing: content-box; */
   font-weight: ${ (props) => (props.isActive ? 'bold' : 'normal') };
+  border-bottom: 1px solid black;
+  margin-left: 30px;
+  padding: 10px 0;
+
+  &::marker {
+    text-indent: unset !important;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -76,10 +143,13 @@ const TitleContainer = styled.div`
   justify-content: space-between;
   
   &::after {
-    content: 'V';
+    content: 'v';
+    font-weight: bold;
+    line-height: 0.7;
+    text-align: center;
     position: absolute;
-    right: 16px;
-    bottom: 16px;
+    right: 24px;
+    bottom: 22px;
     height: 16px;
     width: 16px;
     /* background-image: url( ${require('../../assets/images/icons/chevron.svg')} ); */
@@ -113,7 +183,7 @@ const DropdownContainer = styled.div`
   box-shadow: ${(props) => props.isOpen && '0 3px 8px 0 rgba(0, 0, 0, 0.1);'}; /* 0 2px 15px 0 rgba(0, 0, 0, 0.04), 0 5px 12px 0 rgba(0, 0, 0, 0.03); */
   transition: height 0.3s ease;
   position: absolute;
-  top: 85px;
+  /* top: 85px; */
   z-index: 2;
   height: ${(props) => (props.isOpen ? '100vh' : 0)};
   overflow: hidden;
@@ -139,6 +209,7 @@ const Category = styled.div`
     transition: color 0.3s ease;
     line-height: 1;
     color: ${(props) => props.isActive ? 'yellow' : 'white'};
+    margin: 10px;
   }
 
   &:hover {

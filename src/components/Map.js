@@ -183,7 +183,6 @@ export default Map;
 const Container = styled.div`
   width: 100%;
   height: 100vh; /* 680px */
-  border: 1px solid orange;
   position: relative;
   // overflow: hidden;
   padding: unset;
@@ -195,5 +194,4 @@ const MapWrapper = styled.div`
   right: 0;
   width: 80%;
   height: 100vh;
-  border: 1px solid blue;
 `;
