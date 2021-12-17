@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Point = (props) => {
   const { lat, lng, index, isActive, point, handleClick } = props;
-  const { label } = props.point;
+  const { label, desc } = props.point;
 
   return (
     <Root
@@ -15,6 +15,7 @@ const Point = (props) => {
     >
       <Label isActive={isActive}>
         <p className="body3 bold">{label}</p>
+        <span>{desc}</span>
       </Label>
       
       <Index isActive={isActive}>{index + 1}</Index>
@@ -41,8 +42,7 @@ const Label = styled.div`
   pointer-events: none;
   height: fit-content;
   width: fit-content;
-  padding: 0px;
-  font-weight: bold;
+  padding: 0px;  
   font-size: 12px;
   text-align: center;
   background-color: brown;
@@ -65,6 +65,10 @@ const Label = styled.div`
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid brown;
+  }
+
+  p {
+    font-weight: bold;
   }
 `;
 

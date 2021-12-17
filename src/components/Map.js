@@ -58,20 +58,20 @@ const Map = ({center, zoom}) => {
     setActivePoint(point);
 
     let bounds = new maps.LatLngBounds();
-    console.log('handlePointSelect bounds', bounds)
 
     mapPoints[activeCategory].forEach((place) => {
       bounds.extend(new maps.LatLng(place.lat, place.lng));
     });
 
-    bounds.extend(new maps.LatLng(point.lat, point.lng));
+    const pointLatLng = new maps.LatLng(point.lat, point.lng);
+    bounds.extend(pointLatLng);
 
     let currentMapCoords = map.getBounds();
 
-    if (map.getBounds().contains(new maps.LatLng(point.lat, point.lng))) {
+    if (currentMapCoords.contains(pointLatLng)) {
       return;
     } else {
-      currentMapCoords.extend(new maps.LatLng(point.lat, point.lng));
+      currentMapCoords.extend(pointLatLng);
       map.fitBounds(bounds);
       if (activeCategory === 'Parks') {
         map.setZoom(map.getZoom() - 0.5);
@@ -85,7 +85,6 @@ const Map = ({center, zoom}) => {
     setMaps(maps);
 
     const bounds = new maps.LatLngBounds();
-    console.log('getMapBounds bounds', bounds)
 
     places.forEach((place) => {
       bounds.extend(new maps.LatLng(place.lat, place.lng));
@@ -109,7 +108,6 @@ const Map = ({center, zoom}) => {
   const apiIsLoaded = (map, maps, places) => {
     // Get bounds by our places
     const bounds = getMapBounds(map, maps, places);
-    console.log('apiIsLoaded bounds', bounds)
 
     // Fit map to bounds
     map.fitBounds(bounds);

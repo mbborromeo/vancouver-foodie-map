@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Map from './components/Map';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
 
   return (
     <div style={{ height: '100vh', width: '100%' }}>
-      <h2 className="map-h2">Foodie Tour: South Granville &amp; surrounds</h2>
+      <Header>Foodie Tour: South Granville &amp; surrounds</Header>
 
       <Map 
         center={{ lat: location.lat, lng: location.lng }}
@@ -23,3 +24,12 @@ function App() {
 }
 
 export default App;
+
+const Header = styled.h2`
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: yellow;
+  margin: 0;
+  padding: 20px 15px;
+`;
