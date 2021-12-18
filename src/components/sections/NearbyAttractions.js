@@ -13,12 +13,12 @@ const NearbyAttractions = (props) => {
 
   return (
     <Root>
-      <TitleContainer onClick={() => handleMenu(!menuOpen)} menuOpen={menuOpen}>
+      {/* <TitleContainer onClick={() => handleMenu(!menuOpen)} menuOpen={menuOpen}>
         <p className="body2">Select A Category</p>
         <p className="bold">{activeCategory}</p>
-      </TitleContainer>
+      </TitleContainer> */}
 
-      <DropdownContainer isOpen={menuOpen} activeCategory={activeCategory}>
+      {/* <DropdownContainer isOpen={menuOpen} activeCategory={activeCategory}>
         { Object.keys( mapPoints ).map( (category, index) => (
             <Category
               key={ index }
@@ -29,7 +29,7 @@ const NearbyAttractions = (props) => {
             </Category>
           )
         )}
-      </DropdownContainer>
+      </DropdownContainer> */}
 
       <AttractionsList>
         <ol>
@@ -57,16 +57,21 @@ const Root = styled.div`
   top: 0;
   left: 0;
   width: 20%;
-  height: auto;
+  height: 100%;
   background-color: sandybrown;
+    
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const AttractionsList = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  /* padding: 12px; */
   background-color: white;
-  max-height: 515px;
+  /* max-height: 515px; */
+  height: 100%;
 
   ol {
     margin: 0;
@@ -185,7 +190,7 @@ const DropdownContainer = styled.div`
   position: absolute;
   /* top: 85px; */
   z-index: 2;
-  height: ${(props) => (props.isOpen ? '100vh' : 0)};
+  height: ${(props) => (props.isOpen ? '100%' : 0)};
   overflow: hidden;
 `;
 

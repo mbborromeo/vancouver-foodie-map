@@ -22,6 +22,7 @@ export default {
       label: 'Blenz Coffee',
       lat: 49.26349295339335, 
       lng: -123.11971221608198,
+      desc: "Everything's good at this local Canadian franchise"
     },
     {
       label: 'Dalina',
@@ -129,7 +130,7 @@ export default {
       label: 'Koko Monk Hot Chocolate Lounge',
       lat: 49.264368103138786, 
       lng: -123.17001615971574,
-      desc: 'Unique hot chocolate concoctions drawing inspiration from around the world!'
+      desc: 'Unique hot chocolate concoctions drawing on inspiration from around the world!'
     },
     {
       label: 'JJ Bean Coffee Roasters',
@@ -232,6 +233,12 @@ export default {
       lat: 49.26487201356924, 
       lng: -123.11726952339187,
       desc: 'Interesting split-level home-style cafe with many a food and drink!'
+    },
+    {
+      label: 'Matchstick Fraser St',
+      lat: 49.25731861663339, 
+      lng: -123.09026880521802,
+      desc: 'Fresh bread and pastry, and interesting seasonal drinks such as cardamom ginger chai latte'
     }
   ],
 

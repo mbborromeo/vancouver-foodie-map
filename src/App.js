@@ -11,14 +11,16 @@ function App() {
   const zoomLevel = 12;
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <Header>Foodie Tour: South Granville &amp; surrounds</Header>
+    <div>
+      <Header>Cafe Crawl: South Granville &amp; surrounds</Header>
 
-      <Map 
-        center={{ lat: location.lat, lng: location.lng }}
-        zoom={ zoomLevel }        
-        mapId='c5ace3bb1e7e9bb6' // style not working
-      />
+      <div style={{ height: '90vh', width: '100%' }}>
+        <Map 
+          center={{ lat: location.lat, lng: location.lng }}
+          zoom={ zoomLevel }        
+          mapId='c5ace3bb1e7e9bb6' // style not working
+        />
+      </div>
     </div>
   );
 }
@@ -31,5 +33,6 @@ const Header = styled.h2`
   z-index: 100;
   background-color: yellow;
   margin: 0;
-  padding: 20px 15px;
+  /* padding: 20px 15px; */
+  height: 10vh
 `;
