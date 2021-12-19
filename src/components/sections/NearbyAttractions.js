@@ -126,7 +126,7 @@ const AttractionsList = styled.div`
 const ListItem = styled.li`
   /* box-sizing: content-box; */
   font-weight: ${ (props) => (props.isActive ? 'bold' : 'normal') };
-  color: black;
+  color: ${ (props) => (props.isActive ? 'black' : 'darkred') };
   border-bottom: 1px solid black;
   margin-left: 30px;
   padding: 10px 0;

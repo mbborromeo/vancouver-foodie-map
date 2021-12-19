@@ -73,8 +73,8 @@ const Label = styled.div`
 `;
 
 const Index = styled.h6`
-  color: lightyellow; 
-  font-weight: ${ (props) => props.isActive ? 'bold' : 'normal' };
+  color: ${ (props) => props.isActive ? 'black' : 'lightyellow' }; 
+  font-weight: normal;
   font-size: 14px;
   text-align: center;
 `;
