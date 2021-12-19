@@ -31,7 +31,8 @@ const Header = styled.h2`
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: yellow;
+  background-color: darkred;
+  color: lightyellow;
   margin: 0;
   /* padding: 20px 15px; */
   height: 10vh

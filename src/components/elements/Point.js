@@ -34,7 +34,7 @@ const Root = styled.div`
   width: 20px;
   position: relative;
   z-index: ${(props) => (props.isActive ? 100 : 3)};
-  background-color: ${(props) => (props.isActive ? 'brown' : 'rosybrown')};
+  background-color: ${(props) => (props.isActive ? 'sandybrown' : 'brown')};
 `;
 
 const Label = styled.div`
@@ -42,11 +42,11 @@ const Label = styled.div`
   pointer-events: none;
   height: fit-content;
   width: fit-content;
-  padding: 0px;  
+  padding: 0 10px 14px;  
   font-size: 12px;
   text-align: center;
-  background-color: brown;
-  color: white;
+  background-color: sandybrown;
+  color: black;
   position: absolute;
   left: 50%;
   top: -10px;
@@ -64,7 +64,7 @@ const Label = styled.div`
     transform: translateX(-50%);
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid brown;
+    border-top: 10px solid sandybrown;
   }
 
   p {
@@ -73,8 +73,8 @@ const Label = styled.div`
 `;
 
 const Index = styled.h6`
-  color: ${ (props) => props.isActive ? 'white' : 'black' };
-  font-weight: normal;
+  color: lightyellow; 
+  font-weight: ${ (props) => props.isActive ? 'bold' : 'normal' };
   font-size: 14px;
   text-align: center;
 `;

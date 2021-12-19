@@ -239,6 +239,21 @@ export default {
       lat: 49.25731861663339, 
       lng: -123.09026880521802,
       desc: 'Fresh bread and pastry, and interesting seasonal drinks such as cardamom ginger chai latte'
+    },
+    {
+      label: 'Bean Around the World',
+      lat: 49.25953124064112, 
+      lng: -123.13883118974562
+    },
+    {
+      label: 'Trees Organic Coffee',
+      lat: 49.26361006696036, 
+      lng: -123.14077946178995
+    },
+    {
+      label: 'Willow Cafe Bakery',
+      lat: 49.25719394900175, 
+      lng: -123.12190728174963
     }
   ],
 

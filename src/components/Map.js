@@ -191,7 +191,6 @@ const MapWrapper = styled.div`
   right: 0;
   width: 80%;
   height: 100%;
-
     
   @media (max-width: 767px) {
     width: 100%;

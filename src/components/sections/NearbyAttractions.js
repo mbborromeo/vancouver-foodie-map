@@ -58,7 +58,7 @@ const Root = styled.div`
   left: 0;
   width: 20%;
   height: 100%;
-  background-color: sandybrown;
+  background-color: sandybrown; /* rosybrown */
     
   @media (max-width: 767px) {
     display: none;
@@ -69,7 +69,7 @@ const AttractionsList = styled.div`
   display: flex;
   flex-direction: column;
   /* padding: 12px; */
-  background-color: white;
+  /* background-color: white; */
   /* max-height: 515px; */
   height: 100%;
 
@@ -95,13 +95,13 @@ const AttractionsList = styled.div`
 
     /* Track */
     ::-webkit-scrollbar-track {
-      background: white;
+      background: sandybrown;
       height: 467px;
     }
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
-      background: blue;
+      background: brown;
       height: 300px;
       width: 4px;
       border-radius: 0;
@@ -126,6 +126,7 @@ const AttractionsList = styled.div`
 const ListItem = styled.li`
   /* box-sizing: content-box; */
   font-weight: ${ (props) => (props.isActive ? 'bold' : 'normal') };
+  color: black;
   border-bottom: 1px solid black;
   margin-left: 30px;
   padding: 10px 0;
