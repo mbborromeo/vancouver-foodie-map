@@ -12,7 +12,7 @@ const Map = ({center, zoom}) => {
   const [activeCategory, setActiveCategory] = useState('CafesAndBakeries');
   const [menuOpen, setMenuOpen] = useState(false);
   const [activePoint, setActivePoint] = useState(null);
-  const [maps, setMaps] = useState(null);
+  const [googleMapsObj, setGoogleMapsObj] = useState(null);
   const [map, setMap] = useState(null);
 
   const [mapCenter, setMapCenter] = useState({
@@ -35,6 +35,7 @@ const Map = ({center, zoom}) => {
     });
   };
 
+  /*
   const handleCategorySelection = (category) => {
     setActiveCategory( category );
     setMapCenter({ 
@@ -44,25 +45,26 @@ const Map = ({center, zoom}) => {
     setActivePoint(null);
     setMenuOpen(false);
 
-    const bounds = new maps.LatLngBounds();
+    const bounds = new googleMapsObj.LatLngBounds();
     mapPoints[ category ].forEach( (place) => {
-      bounds.extend( new maps.LatLng(place.lat, place.lng) );
+      bounds.extend( new googleMapsObj.LatLng(place.lat, place.lng) );
     });
 
-    bounds.extend( new maps.LatLng( center.lat, center.lng) );
+    bounds.extend( new googleMapsObj.LatLng( center.lat, center.lng) );
     map.fitBounds( bounds );
   };
+  */
 
   const handlePointSelect = (point) => {
     setActivePoint(point);
 
-    let bounds = new maps.LatLngBounds();
+    let bounds = new googleMapsObj.LatLngBounds();
 
     mapPoints[activeCategory].forEach((place) => {
-      bounds.extend(new maps.LatLng(place.lat, place.lng));
+      bounds.extend(new googleMapsObj.LatLng(place.lat, place.lng));
     });
 
-    const pointLatLng = new maps.LatLng(point.lat, point.lng);
+    const pointLatLng = new googleMapsObj.LatLng(point.lat, point.lng);
     bounds.extend(pointLatLng);
 
     let currentMapCoords = map.getBounds();
@@ -79,25 +81,25 @@ const Map = ({center, zoom}) => {
   };
 
   // Return map bounds based on list of places
-  const getMapBounds = (map, maps, places) => {    
+  const getMapBounds = (map, googleMapsObj, places) => {    
     setMap(map);
-    setMaps(maps);
+    setGoogleMapsObj(googleMapsObj);
 
-    const bounds = new maps.LatLngBounds();
+    const bounds = new googleMapsObj.LatLngBounds();
 
     places.forEach((place) => {
-      bounds.extend(new maps.LatLng(place.lat, place.lng));
+      bounds.extend(new googleMapsObj.LatLng(place.lat, place.lng));
     });
 
-    bounds.extend(new maps.LatLng(mapCenter.lat, mapCenter.lng));
+    bounds.extend(new googleMapsObj.LatLng(mapCenter.lat, mapCenter.lng));
 
     return bounds;
   };
 
   // Re-center map when resizing the window
-  const bindResizeListener = (map, maps, bounds) => {
-    maps.event.addDomListenerOnce(map, 'idle', () => {
-      maps.event.addDomListener(window, 'resize', () => {
+  const bindResizeListener = (map, googleMapsObj, bounds) => {
+    googleMapsObj.event.addDomListenerOnce(map, 'idle', () => {
+      googleMapsObj.event.addDomListener(window, 'resize', () => {
         map.fitBounds(bounds);
       });
     });
@@ -128,7 +130,7 @@ const Map = ({center, zoom}) => {
         activePoint={activePoint}
         menuOpen={menuOpen}
         handleMenu={setMenuOpen}
-        handleCategorySelection={handleCategorySelection}
+        // handleCategorySelection={handleCategorySelection}
         mapPoints={mapPoints}
         handlePointSelect={handlePointSelect}
       />
