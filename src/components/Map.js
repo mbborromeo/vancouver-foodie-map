@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import styled from 'styled-components';
@@ -17,8 +16,8 @@ const Map = ({center, zoom}) => {
   const [map, setMap] = useState(null);
 
   const [mapCenter, setMapCenter] = useState({
-    lat: 49.26667042947885, 
-    lng: -123.13828862493452,
+    lat: center.lat, 
+    lng: center.lng,
   });
 
   Map.defaultProps = {
@@ -31,16 +30,16 @@ const Map = ({center, zoom}) => {
 
   const resetMap = () => {
     setMapCenter({ 
-      lat: 49.26667042947885, 
-      lng: -123.13828862493452,
+      lat: center.lat, 
+      lng: center.lng,
     });
   };
 
   const handleCategorySelection = (category) => {
     setActiveCategory( category );
     setMapCenter({ 
-      lat: 49.26667042947885, 
-      lng: -123.13828862493452,
+      lat: center.lat, 
+      lng: center.lng,
     });
     setActivePoint(null);
     setMenuOpen(false);
@@ -50,7 +49,7 @@ const Map = ({center, zoom}) => {
       bounds.extend( new maps.LatLng(place.lat, place.lng) );
     });
 
-    bounds.extend( new maps.LatLng( 49.26667042947885, -123.13828862493452) );
+    bounds.extend( new maps.LatLng( center.lat, center.lng) );
     map.fitBounds( bounds );
   };
 
