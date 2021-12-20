@@ -32,8 +32,17 @@ const Header = styled.h2`
   top: 0;
   z-index: 100;
   background-color: darkred;
-  color: lightyellow;
+  color: lightgoldenrodyellow;
   margin: 0;
   /* padding: 20px 15px; */
-  height: 10vh
+  height: 10vh;
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  font-size: 35px;
+  line-height: 70px;
+  font-weight: normal;
+
+  @media (max-width: 767px) {
+    font-size: 27px;
+    line-height: 25px;
+  }
 `;

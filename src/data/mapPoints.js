@@ -115,10 +115,15 @@ export default {
       desc: 'Excellent food, pastry and coffee!'
     },
     {
-      label: 'Caffe Artigiano',
+      label: 'Caffe Artigiano - Yaletown',
       lat: 49.274798669343184, 
       lng: -123.12241934125637,
       desc: 'Nice ambience and coffee'
+    },
+    {
+      label: 'Caffe Artigiano - Broadway',
+      lat: 49.26329200372624, 
+      lng: -123.10707922092897
     },
     {
       label: 'Coo Coo Coffee',
@@ -254,6 +259,32 @@ export default {
       label: 'Willow Cafe Bakery',
       lat: 49.25719394900175, 
       lng: -123.12190728174963
+    },
+    {
+      label: 'Mon Pitou Bakery',
+      lat: 49.26560354014844, 
+      lng: -123.1362842832091,
+      desc: 'Chic, little corner French cafe'
+    },
+    {
+      label: 'Halfday Tea & Flower',
+      lat: 49.263526903254515, 
+      lng: -123.12399052182133
+    },
+    {
+      label: 'Elysian Coffee',
+      lat: 49.263136209031295, 
+      lng: -123.11729314750058
+    },
+    {
+      label: 'Aperture Coffee Bar',
+      lat: 49.26333017773583, 
+      lng: -123.11048120087727
+    },
+    {
+      label: 'Black Coffeehouse',
+      lat: 49.26316437340903, 
+      lng: -123.10470895919948
     }
   ],
 

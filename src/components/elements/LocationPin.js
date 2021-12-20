@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const LocationPin = ({ text }) => (
   <Root>
     {/* <Icon icon={ locationIcon } className="pin-icon" /> */}
-    <div style={{ width: '10px', height: '10px', border: '5px solid red', }}></div>
+    <div style={{ width: '80px', height: '80px', border: '5px solid gold', }}></div>
     <p className="pin-text">{ text }</p>
   </Root>
 );
@@ -17,6 +17,10 @@ const Root = styled.div`
   align-items: center;
   width: 180px;
   color: var(--main-blue);
+
+  div {
+    border-radius: 50%;
+  }
 
   .pin-icon {
     font-size: 4rem;
