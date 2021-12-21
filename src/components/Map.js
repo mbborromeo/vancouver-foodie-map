@@ -81,39 +81,39 @@ const Map = ({center, zoom}) => {
   };
 
   // Return map bounds based on list of places
-  const getMapBounds = (map, googleMapsObj, places) => {    
+  const getMapBounds = (map, gmapsObj, places) => {    
     setMap(map);
-    setGoogleMapsObj(googleMapsObj);
+    setGoogleMapsObj(gmapsObj);
 
-    const bounds = new googleMapsObj.LatLngBounds();
+    const bounds = new gmapsObj.LatLngBounds();
 
     places.forEach((place) => {
-      bounds.extend(new googleMapsObj.LatLng(place.lat, place.lng));
+      bounds.extend(new gmapsObj.LatLng(place.lat, place.lng));
     });
 
-    bounds.extend(new googleMapsObj.LatLng(mapCenter.lat, mapCenter.lng));
+    bounds.extend(new gmapsObj.LatLng(mapCenter.lat, mapCenter.lng));
 
     return bounds;
   };
 
   // Re-center map when resizing the window
-  const bindResizeListener = (map, googleMapsObj, bounds) => {
-    googleMapsObj.event.addDomListenerOnce(map, 'idle', () => {
-      googleMapsObj.event.addDomListener(window, 'resize', () => {
+  const bindResizeListener = (map, gmapsObj, bounds) => {
+    gmapsObj.event.addDomListenerOnce(map, 'idle', () => {
+      gmapsObj.event.addDomListener(window, 'resize', () => {
         map.fitBounds(bounds);
       });
     });
   };
 
   // Fit map to its bounds after the api is loaded
-  const apiIsLoaded = (map, maps, places) => {
+  const apiIsLoaded = (map, gmapsObj, arrayOfPlaces) => {
     // Get bounds by our places
-    const bounds = getMapBounds(map, maps, places);
+    const bounds = getMapBounds(map, gmapsObj, arrayOfPlaces);
 
     // Fit map to bounds
     map.fitBounds(bounds);
     // Bind the resize listener
-    bindResizeListener(map, maps, bounds);
+    bindResizeListener(map, gmapsObj, bounds);
   };
 
   useEffect(() => {
@@ -139,8 +139,8 @@ const Map = ({center, zoom}) => {
         <GoogleMapReact
           bootstrapURLKeys={ { key: myAPIKey } }
           defaultCenter={{ lat: mapCenter.lat, lng: mapCenter.lng }}
-          defaultZoom={zoom}        
           center={{ lat: mapCenter.lat, lng: mapCenter.lng }}
+          defaultZoom={zoom}
           zoom={zoom}
           // options={{
           //   styles: mapStyles,
