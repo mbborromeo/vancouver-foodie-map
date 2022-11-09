@@ -1,37 +1,36 @@
-import { useState, useEffect } from "react";
-import GoogleMapReact from "google-map-react";
-import styled from "styled-components";
-import LocationPin from "./elements/LocationPin";
-import NearbyAttractions from "./sections/NearbyAttractions";
-import Point from "./elements/Point";
-import mapPoints from "../data/mapPoints";
+import { useState, useEffect } from 'react';
+import GoogleMapReact from 'google-map-react';
+import styled from 'styled-components';
+import LocationPin from './elements/LocationPin';
+import NearbyAttractions from './sections/NearbyAttractions';
+import Point from './elements/Point';
+import mapPoints from '../data/mapPoints';
 
 const myAPIKey = "AIzaSyCmgI79g2spF5dHDqd4_xJMAC_vOehnzWo";
 
-const Map = ({ center, zoom }) => {
-  const [activeCategory, setActiveCategory] = useState("CafesAndBakeries");
+const Map = ({center, zoom}) => {
+  const [activeCategory, setActiveCategory] = useState('CafesAndBakeries');
   const [menuOpen, setMenuOpen] = useState(false);
   const [activePoint, setActivePoint] = useState(null);
   const [googleMapsObj, setGoogleMapsObj] = useState(null);
   const [map, setMap] = useState(null);
-  const [showDetailedBox, setShowDetailedBox] = useState(false);
 
   const [mapCenter, setMapCenter] = useState({
-    lat: center.lat,
+    lat: center.lat, 
     lng: center.lng,
   });
 
   Map.defaultProps = {
     center: {
-      lat: 49.26667042947885,
+      lat: 49.26667042947885, 
       lng: -123.13828862493452,
     },
     zoom: 12,
   };
 
   const resetMap = () => {
-    setMapCenter({
-      lat: center.lat,
+    setMapCenter({ 
+      lat: center.lat, 
       lng: center.lng,
     });
   };
@@ -59,12 +58,6 @@ const Map = ({ center, zoom }) => {
   const handlePointSelect = (point) => {
     setActivePoint(point);
 
-    // display div on Map, not just on Point
-    console.log("Map - handlePointSelect - point", point);
-    // bounds draw rectangle on bottom of screen OR create HTML div
-    setShowDetailedBox(true);
-    console.log("Map - handlePointSelect - showDetailedBox", showDetailedBox);
-
     let bounds = new googleMapsObj.LatLngBounds();
 
     mapPoints[activeCategory].forEach((place) => {
@@ -81,14 +74,14 @@ const Map = ({ center, zoom }) => {
     } else {
       currentMapCoords.extend(pointLatLng);
       map.fitBounds(bounds);
-      if (activeCategory === "Parks") {
+      if (activeCategory === 'Parks') {
         map.setZoom(map.getZoom() - 0.5);
       }
     }
   };
 
   // Return map bounds based on list of places
-  const getMapBounds = (map, gmapsObj, places) => {
+  const getMapBounds = (map, gmapsObj, places) => {    
     setMap(map);
     setGoogleMapsObj(gmapsObj);
 
@@ -105,8 +98,8 @@ const Map = ({ center, zoom }) => {
 
   // Re-center map when resizing the window
   const bindResizeListener = (map, gmapsObj, bounds) => {
-    gmapsObj.event.addDomListenerOnce(map, "idle", () => {
-      gmapsObj.event.addDomListener(window, "resize", () => {
+    gmapsObj.event.addDomListenerOnce(map, 'idle', () => {
+      gmapsObj.event.addDomListener(window, 'resize', () => {
         map.fitBounds(bounds);
       });
     });
@@ -144,7 +137,7 @@ const Map = ({ center, zoom }) => {
 
       <MapWrapper>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: myAPIKey }}
+          bootstrapURLKeys={ { key: myAPIKey } }
           defaultCenter={{ lat: mapCenter.lat, lng: mapCenter.lng }}
           center={{ lat: mapCenter.lat, lng: mapCenter.lng }}
           defaultZoom={zoom}
@@ -154,21 +147,19 @@ const Map = ({ center, zoom }) => {
           //   disableDefaultUI: disableDefaultUI ? true : false,
           //   clickableIcons: false,
           // }}
-          mapId="c5ace3bb1e7e9bb6" // style not working
-          yesIWantToUseGoogleMapApiInternals={true}
-          onGoogleApiLoaded={({ map, maps }) =>
-            apiIsLoaded(map, maps, mapPoints[activeCategory])
-          }
+          mapId='c5ace3bb1e7e9bb6' // style not working        
+          yesIWantToUseGoogleMapApiInternals={ true }
+          onGoogleApiLoaded={ ({ map, maps }) => apiIsLoaded(map, maps, mapPoints[activeCategory]) }
         >
           <LocationPin
-            lat={center.lat}
-            lng={center.lng}
-            text={center.address}
+            lat={ center.lat }
+            lng={ center.lng }
+            text={ center.address }
           />
 
-          {mapPoints[activeCategory] &&
-            mapPoints[activeCategory].length > 0 &&
-            mapPoints[activeCategory].map((point, index) => (
+          {
+            mapPoints[activeCategory] && mapPoints[activeCategory].length > 0 &&
+            mapPoints[activeCategory].map( (point, index) => (
               <Point
                 point={point}
                 lat={point.lat}
@@ -176,21 +167,15 @@ const Map = ({ center, zoom }) => {
                 key={index}
                 index={index}
                 handleClick={handlePointSelect}
-                isActive={activePoint === point}
+                isActive={activePoint === point}                
               />
-            ))}
+            ))
+          }
         </GoogleMapReact>
-
-        {showDetailedBox && (
-          <DetailedBox>
-            <h3>{activePoint.label}</h3>
-            <p>{activePoint.desc}</p>
-          </DetailedBox>
-        )}
       </MapWrapper>
     </Root>
   );
-};
+}
 
 export default Map;
 
@@ -207,18 +192,8 @@ const MapWrapper = styled.div`
   right: 0;
   width: 80%;
   height: 100%;
-
+    
   @media (max-width: 767px) {
     width: 100%;
   }
-`;
-
-const DetailedBox = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border: 1px solid red;
-  width: 80vw;
-  height: 15vh;
-  background-color: yellow;
 `;
