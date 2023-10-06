@@ -2,9 +2,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# System Dependencies
+
+Node 16.17.1\
+NPM 8.15.0
+
+You will need your own .env file in the root folder, and define REACT_APP_GOOGLE_MAPS_API_KEY so it equals your Google Maps API Key wrapped in quotation marks. Can use the .env.example file I provided, just be sure to rename it to .env and paste your key there. You will need to create a [Google Maps API Key](https://developers.google.com/maps/documentation/embed/get-api-key) first.
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Install the project and system dependencies.
 
 ### `npm start`
 
@@ -68,3 +79,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
