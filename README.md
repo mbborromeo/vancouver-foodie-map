@@ -1,8 +1,10 @@
-# Getting Started with Create React App
+# Vancouver Cafe Mapper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project calls Google Maps API to plot cafes I've been to using latitute and longitude information listed in a JSON file.
 
 # System Dependencies
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Node 16.17.1\
 NPM 8.15.0
