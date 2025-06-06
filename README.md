@@ -7,7 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Node 16.17.1\
 NPM 8.15.0
 
-You will need your own .env file in the root folder, and define REACT_APP_GOOGLE_MAPS_API_KEY so it equals your Google Maps API Key wrapped in quotation marks. Can use the .env.example file I provided, just be sure to rename it to .env and paste your key there. You will need to create a [Google Maps API Key](https://developers.google.com/maps/documentation/embed/get-api-key) first.
+Note: You will need your own .env file in the root folder, and define REACT_APP_GOOGLE_MAPS_API_KEY so it equals your Google Maps API Key wrapped in quotation marks. Can use the .env.example file I provided, just be sure to rename it to .env and paste your key there. You will need to create a [Google Maps API Key](https://developers.google.com/maps/documentation/embed/get-api-key) first.
+You may also need to set SKIP_PREFLIGHT_CHECK=true as a workaround, as I was using some older dependencies a while ago.
 
 ## Available Scripts
 
